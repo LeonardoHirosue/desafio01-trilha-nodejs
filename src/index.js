@@ -101,7 +101,7 @@ app.patch('/todos/:id/done', checksExistsUserAccount, checksExistsUserTodo, (req
 
 app.delete('/todos/:id', checksExistsUserAccount, checksExistsUserTodo, (request, response) => {
   const { user, todo } = request;
-  const indexOfTodo = user.todos.indexOf(user => user.todo = todo)
+  const indexOfTodo = user.todos.indexOf(user => user.todo === todo)
   
   user.todos.splice(indexOfTodo, 1);
 
