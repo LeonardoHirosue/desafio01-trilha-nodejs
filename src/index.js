@@ -43,7 +43,7 @@ app.post('/users', (request, response) => {
   const usernameAlreadyExists = users.find(user => user.username === username)
 
   if(usernameAlreadyExists){
-    return response.status(400).json({ error: "Username alreasy existis!"})
+    return response.status(400).json({ error: "Username alreasy exists!"})
   }
 
   const user = {
@@ -101,8 +101,9 @@ app.patch('/todos/:id/done', checksExistsUserAccount, checksExistsUserTodo, (req
 
 app.delete('/todos/:id', checksExistsUserAccount, checksExistsUserTodo, (request, response) => {
   const { user, todo } = request;
-
-  user.todos.splice(todo, 1);
+  const indexOfTodo = user.todos.indexOf(user => user.todo = todo)
+  
+  user.todos.splice(indexOfTodo, 1);
 
   return response.status(204).send();
 });
